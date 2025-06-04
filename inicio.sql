@@ -402,3 +402,12 @@ INSERT INTO detalles_pedidos (pedido_id, producto_id, cantidad, precio_unitario)
 (20, 20, 12,  622308.00);
 
 SHOW TABLES;
+
+
+--Consulta todos los datos de la tabla `usuarios` para ver la lista completa de clientes.
+SELECT * FROM usuarios;
+
+--* Muestra los nombres y correos electrónicos de todos los clientes que residen en la ciudad de Madrid.
+SELECT nombre, email, ciudad 
+FROM usuarios 
+WHERE ciudad = 'Madrid';
