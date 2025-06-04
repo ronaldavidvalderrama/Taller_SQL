@@ -1,3 +1,4 @@
+-- Active: 1749039502372@@127.0.0.1@3307@tallerSQL
 CREATE DATABASE tallerSQL;
 
 USE tallerSQL;
@@ -401,13 +402,41 @@ INSERT INTO detalles_pedidos (pedido_id, producto_id, cantidad, precio_unitario)
 (19, 19, 11, 1244616.00),
 (20, 20, 12,  622308.00);
 
+
+SHOW DATABASES;
+
+USE tallerSQL;
+
+SELECT * FROM productos;
+
 SHOW TABLES;
 
 
 --Consulta todos los datos de la tabla `usuarios` para ver la lista completa de clientes.
-SELECT * FROM usuarios;
+SELECT * 
+FROM usuarios
+WHERE tipo_id = 1;
+
 
 --* Muestra los nombres y correos electrónicos de todos los clientes que residen en la ciudad de Madrid.
 SELECT nombre, email, ciudad 
 FROM usuarios 
 WHERE ciudad = 'Madrid';
+
+--Obtén una lista de productos con un precio mayor a $100.000, mostrando solo el nombre y el precio.
+SELECT nombre, precio
+FROM productos
+WHERE precio > 100000
+
+--Encuentra todos los empleados que tienen un salario superior a $2.500.000, mostrando su nombre, puesto y salario.
+
+SELECT nombre, puesto, salario
+FROM empleados AS e
+JOIN usuarios AS u ON e.usuario_id = u.usuario_id
+WHERE salario > 2500000;
+
+--Lista los nombres de los productos en la categoría "Electrónica", ordenados alfabéticamente.
+SELECT nombre, categoria
+FROM productos
+WHERE categoria = 'Electronica'
+ORDER BY nombre ASC;
