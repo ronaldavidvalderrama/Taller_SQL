@@ -1,4 +1,4 @@
--- Active: 1749039502372@@127.0.0.1@3307@tallerSQL
+-- Active: 1748997798874@@127.0.0.1@3306@tallerSQL
 CREATE DATABASE tallerSQL;
 
 USE tallerSQL;
@@ -440,3 +440,42 @@ SELECT nombre, categoria
 FROM productos
 WHERE categoria = 'Electronica'
 ORDER BY nombre ASC;
+
+--* Muestra los detalles de los pedidos que están en estado "Pendiente", incluyendo el ID del pedido, el ID del cliente y la fecha del pedido.
+
+SELECT pedido_id, cliente_id, fecha_pedido, estado
+FROM pedidos
+WHERE estado = 'Pendiente';
+
+--* Encuentra el nombre y el precio del producto más caro en la base de datos.
+SELECT nombre, precio
+FROM productos
+ORDER BY precio DESC
+LIMIT 1;
+
+--* Obtén el total de pedidos realizados por cada cliente, mostrando el ID del cliente y el total de pedidos.
+
+SELECT cliente_id, COUNT(*) AS total_pedidos
+FROM pedidos
+GROUP BY cliente_id;
+
+-- Calcula el promedio de salario de todos los empleados en la empresa.
+
+SELECT AVG(salario) AS Promedio_salario
+FROM empleados;
+
+--* Encuentra el número de productos en cada categoría, mostrando la categoría y el número de productos.
+SELECT categoria, COUNT(*) AS total_productos
+FROM productos 
+GROUP BY categoria;
+
+-- Obtén una lista de productos con un precio mayor a $75 USD, mostrando solo el nombre, el precio y su respectivo precio en USD.
+
+SELECT nombre, precio, precio / 20 AS Precio_USD
+FROM productos
+WHERE precio / 20 > 75
+
+-- Lista todos los proveedores registrados.
+
+SELECT * 
+FROM proveedores
